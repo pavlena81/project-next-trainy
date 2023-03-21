@@ -5,7 +5,7 @@ import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <>
       <Head>
@@ -24,6 +24,7 @@ export default function Home() {
       </header>
       <main className={styles.main}>
         <div className={styles.description}>
+          <h1>Hello everyone!</h1>
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.js</code>
@@ -46,8 +47,48 @@ export default function Home() {
             </a>
           </div>
         </div>
+        {data.map(ev => <a key={ev.id} href={'/enevts/${}ev.id'}>
+          <Image alt={ev.title} src={ev.image} width={200} height={250} />
+          <h2>{ev.title}</h2>
+          <p>{ ev.description}</p></a>)}
+        {/* <a href='events/london'>
+          <img/>
+          <h2>Events in Netherlands</h2>
+          <p>
+            Keukenhof is known as the "Garden of Europe" and is one
+            of the largest flower gardens in the world. The garden
+            covers an area of over 79 acres and is home to over 7 million
+            tulips, daffodils, and hyacinths, among other flowers. Keukenhof
+            is only open for a few months every year, from late March to mid-May,
+            when the flowers are in bloom.
+          </p>
+        </a>
 
+        <a href='events/san-francisco'>
+          <img/>
+          <h2>Events in Sangerhausen</h2>
+          <p>
+            One of the most famous is the Europa-Rosarium in Sangerhausen.
+            The Europa-Rosarium is located in the town of Sangerhausen, in
+            the state of Saxony-Anhalt, and is one of the largest rose gardens
+            in the world. The garden was established in 1903 and has been
+            continuously expanded and improved over the years.
+          </p>
+        </a>
         
+        <a href='events/barcelona'>
+          <img/>
+          <h2>Events in England</h2>
+          <p>
+            The David Austin Rose Garden is a famous rose garden located in
+            Albrighton, England, which is about 140 miles northwest of London.
+            The David Austin Rose Garden is a must-visit destination for anyone
+            who loves roses and gardening. It is not only a beautiful display of
+            some of the world's most stunning roses, but it is also a tribute to
+            the legacy of David Austin, who dedicated his life to creating beautiful
+            and fragrant roses that bring joy to people's lives.
+          </p>
+        </a> */}
 
         <div className={styles.grid}>
           <a
@@ -113,4 +154,16 @@ export default function Home() {
       </footer>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const { events_categories} = await import('../data/data.json')
+  console.log(events_categories);
+  //const res = await fetch('URL');
+  //const data =await res.json()
+    return {
+        props: {
+           data: events_categories,
+        },
+    }
 }
