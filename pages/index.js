@@ -47,10 +47,13 @@ export default function Home({ data }) {
             </a>
           </div>
         </div>
-        {data.map(ev => <a key={ev.id} href={'/enevts/${}ev.id'}>
+        {data.map((ev) => (
+          <a key={ev.id} href={`/events/${ev.id}`}>
           <Image alt={ev.title} src={ev.image} width={200} height={250} />
           <h2>{ev.title}</h2>
-          <p>{ ev.description}</p></a>)}
+            <p>{ev.description}</p>
+          </a>
+        ))}
         {/* <a href='events/london'>
           <img/>
           <h2>Events in Netherlands</h2>
