@@ -1,18 +1,21 @@
-import Image from 'next/image'
+import Image from 'next/image';
+import Link from 'next/link';
 
 
-const EventsCategoryPage = ({data}) => {
+const EventsCategoryPage = ({data, pageName}) => {
     return (
         <div>
-            <h1>Events in London</h1>
+            <h1>Events in {pageName}</h1>
             {data ?
                 <div>
+                  
                 {data.map((ev) => (
-                    <a key={ev.id} href={`/events/${ev.city}/${ev.id}`}>
+                  <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`} passHref legacyBehavior>  
+                    <a>
                
                     <Image  src={ev.image} alt={ev.title} width={300} height={300} />
                         <h2>{ev.title}</h2>
-                        <p>{ev.description}</p></a>
+                        <p>{ev.description}</p></a></Link>  
                 ))}
                 </div>
             : ' '}
@@ -48,6 +51,6 @@ export async function getStaticProps(context) {
     return {
       
         // Passed to the page component as props
-        props: { data },
+        props: { data, pageName: id },
     }
 }

@@ -1,7 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import { Inter } from 'next/font/google';
+import styles from '@/styles/Home.module.css';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,18 +18,14 @@ export default function Home({ data }) {
       <header>
         <nav className={styles.grid}>
           <img />
-          <a href='/'>Home</a>
-          <a href='/events'>Events</a>
-          <a href='/about-us'>About Us</a>
+          <Link href='/' passHref legacyBehavior><a>Home</a></Link>
+          <Link href='/events' passHref legacyBehavior><a>Events</a></Link>
+          <Link href='/about-us' passHref legacyBehavior><a>About Us</a></Link>
         </nav>
       </header>
       <main className={styles.main}>
         <div className={styles.description}>
-          <h1>Hello everyone!</h1>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
+          <h1>Hello everyone!</h1>          
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -48,80 +45,15 @@ export default function Home({ data }) {
           </div>
         </div>
         {data.map((ev) => (
-          <a key={ev.id} href={`/events/${ev.id}`}>
+          <Link key={ev.id} href={`/events/${ev.id}`} passHref legacyBehavior>
+          <a>
           <Image alt={ev.title} src={ev.image} width={200} height={250} />
           <h2>{ev.title}</h2>
             <p>{ev.description}</p>
-          </a>
-        ))}
-        {/* <a href='events/london'>
-          <img/>
-          <h2>Events in Netherlands</h2>
-          <p>
-            Keukenhof is known as the "Garden of Europe" and is one
-            of the largest flower gardens in the world. The garden
-            covers an area of over 79 acres and is home to over 7 million
-            tulips, daffodils, and hyacinths, among other flowers. Keukenhof
-            is only open for a few months every year, from late March to mid-May,
-            when the flowers are in bloom.
-          </p>
-        </a>
+          </a></Link>
+        ))}       
 
-        <a href='events/san-francisco'>
-          <img/>
-          <h2>Events in Sangerhausen</h2>
-          <p>
-            One of the most famous is the Europa-Rosarium in Sangerhausen.
-            The Europa-Rosarium is located in the town of Sangerhausen, in
-            the state of Saxony-Anhalt, and is one of the largest rose gardens
-            in the world. The garden was established in 1903 and has been
-            continuously expanded and improved over the years.
-          </p>
-        </a>
-        
-        <a href='events/barcelona'>
-          <img/>
-          <h2>Events in England</h2>
-          <p>
-            The David Austin Rose Garden is a famous rose garden located in
-            Albrighton, England, which is about 140 miles northwest of London.
-            The David Austin Rose Garden is a must-visit destination for anyone
-            who loves roses and gardening. It is not only a beautiful display of
-            some of the world's most stunning roses, but it is also a tribute to
-            the legacy of David Austin, who dedicated his life to creating beautiful
-            and fragrant roses that bring joy to people's lives.
-          </p>
-        </a> */}
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
+        <div className={styles.grid}>        
           <a
             href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}

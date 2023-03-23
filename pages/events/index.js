@@ -1,13 +1,15 @@
-import Image from 'next/legacy/image'
+import Image from 'next/legacy/image';
+import Link from 'next/link';
 
 const EventsPage = ({ data }) => {
     <div>
         {data.map((ev) => (
-            <a key={ev.id} href={`/events/${ev.id}`}>
+            <Link key={ev.id} href={`/events/${ev.id}`} passHref>
+            <a>
           <Image  src={ev.image} alt={ev.title} width={300} height={300} />
             <h2>{ev.title}</h2>
                 
-        </a>
+        </a></Link>
         ))}
     </div>
     return (
