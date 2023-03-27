@@ -62,7 +62,7 @@
 .card:nth-child(even) {
   direction: rtl;
 }
- .card.content {
+ .card.contents {
   width: 50%;
 }
 
@@ -76,6 +76,44 @@
 
 .text_descript {
   padding: 20px 0;
+}
+
+.about_us_page{
+  padding: 20px 10px;
+}
+.about_us_list {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  list-style: none;
+}
+
+.category_evenst {
+  width: 100%;
+}
+
+.content{
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap;   */
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+}
+
+.card_event {
+  position: relative;
+}
+
+.card_event_title{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+  font-size: 38px;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 20px black
 }
 .description {
   display: inherit;
