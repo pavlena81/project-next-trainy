@@ -1,28 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from '../../../styles/Home.module.css'
 
-const EventsCategoryPage = ({data, pageName}) => {
-    return (
-        <div className={styles.category_events}>
-            <h1>Events in {pageName}</h1>
-            {data ?
-                <div className={styles.content}>
-                  
-                {data.map((ev) => (
-                  <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`} passHref legacyBehavior>  
-                    <a>
-               
-                    <Image  src={ev.image} alt={ev.title} width={300} height={300} />
-                        <h2>{ev.title}</h2>
-                        <p>{ev.description}</p></a></Link>  
-                ))}
-                </div>
-            : ' '}
-           
-        </div>
-    )
-}
+import CategoryEvent from '../../../src/components/events/categoryEvent';
+
+const EventsCategoryPage = ({ data, pageName }) => <CategoryEvent data={data} pageName={pageName} />
 
 export default EventsCategoryPage;
 

@@ -47,11 +47,9 @@
 .card{
   display: flex;
   flex-direction: row;
+  /* width: 33%; */
   gap: 30px;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  
+    
 }
 
 .card.image {
@@ -88,7 +86,7 @@
   list-style: none;
 }
 
-.category_evenst {
+.category_events {
   width: 100%;
 }
 
@@ -115,6 +113,14 @@
   text-transform: uppercase;
   text-shadow: 1px 1px 20px black
 }
+
+.cat_event_card{
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  gap:30px;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
