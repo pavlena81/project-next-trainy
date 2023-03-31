@@ -13,7 +13,7 @@ const CategoryEvent = ({ data, pageName }) => {
                   <Link key={ev.id} href={`/events/${ev.city}/${ev.id}`} passHref legacyBehavior>  
                     <a className={styles.cat_event_card}>
                
-                    <Image  src={ev.image} alt={ev.title} width={300} height={300} />
+                    <Image className={styles.img_event} src={ev.image} alt={ev.title} width={300} height={300} />
                         <h2>{ev.title}</h2>
                         <p>{ev.description}</p></a></Link>  
                 ))}

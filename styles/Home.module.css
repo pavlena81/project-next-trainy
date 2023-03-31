@@ -121,6 +121,9 @@
   gap:30px;
 }
 
+.img_event {
+  width: 100%;
+}
 .description {
   display: inherit;
   justify-content: inherit;
