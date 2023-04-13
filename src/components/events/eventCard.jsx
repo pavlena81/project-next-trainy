@@ -9,11 +9,27 @@ const SingleEvent = ({ data }) => {
 
     const router = useRouter();
     console.log(router);
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         const emailValue = inputEmail.current.value;
-        
+        const eventId = router?.query.id;
+
+        try {
+            const response = await fetch('/api/email-registration', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+
+                },
+                body: JSON.stringify({ email: emailValue, eventId })
+            });
+            if(!response.ok) throw new Error(`Error:${response.status}` )
+            const data = await response.json();
+            console.log('POST', data);
+        } catch (e){
+            console.log('Error', e);
+        }
      };
 
      return (
@@ -30,7 +46,7 @@ const SingleEvent = ({ data }) => {
                 id="email"
                 placeholder="Please insert your email here"/>
                 <button
-                    type="button"
+                    type="submit"
                 className={styles.btn_registr}>Submit</button>
             </form>
         </div>
